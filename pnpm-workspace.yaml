@@ -1,0 +1,19 @@
+catalog:
+  "@arethetypeswrong/core": ^0.18.2
+  "@remix-run/component": "github:remix-run/remix#preview/main&path:packages/component"
+  "@testing-library/dom": ^10.4.1
+  "@testing-library/jest-dom": ^6.9.1
+  "@testing-library/user-event": ^14.6.1
+  "@total-typescript/tsconfig": ^1.0.4
+  "@types/node": ^25.5.0
+  happy-dom: ^20.8.4
+  oxfmt: ^0.41.0
+  oxlint: ^1.56.0
+  pretty-dom: ^1.0.0
+  publint: ^0.3.18
+  tsdown: ^0.21.4
+  typescript: ^5.9.3
+  vitest: ^4.0.0
+catalogMode: strict
+
+shellEmulator: true

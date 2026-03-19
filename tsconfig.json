@@ -1,0 +1,8 @@
+{
+  "extends": "@total-typescript/tsconfig/bundler/dom",
+  "compilerOptions": {
+    "allowImportingTsExtensions": true,
+    "jsx": "react-jsx",
+    "jsxImportSource": "@remix-run/component"
+  }
+}
