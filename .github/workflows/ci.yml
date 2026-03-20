@@ -1,0 +1,52 @@
+name: 🧪 Test
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    name: ⚙️ Build
+    runs-on: ubuntu-slim
+    steps:
+      - name: ⬇️ Checkout repo
+        uses: actions/checkout@6
+
+      - name: Setup Vite+
+        uses: voidzero-dev/setup-vp@v1
+        with:
+          node-version-file: .node-version
+          cache: true
+
+      - name: ⚡️ Install Dependencies
+        run: vp install
+
+      - name: ✅ Run Checks
+        run: vp check
+
+      - name: 🏗 Build
+        run: vp build
+
+  test:
+    name: 🧪 Test
+    runs-on: ubuntu-slim
+    steps:
+      - name: ⬇️ Checkout repo
+        uses: actions/checkout@6
+
+      - name: Setup Vite+
+        uses: voidzero-dev/setup-vp@v1
+        with:
+          node-version-file: .node-version
+          cache: true
+
+      - name: ⚡️ Install Dependencies
+        run: vp install
+
+      - name: ✅ Run Checks
+        run: vp check
+
+      - name: 🧪 Run Tests
+        run: vp test
