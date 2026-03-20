@@ -2,6 +2,12 @@
 	"name": "@mcansh/remix-testing-library",
 	"version": "0.0.0",
 	"description": "",
+	"files": [
+		"dist",
+		"src",
+		"!src/__tests__",
+		"README.md"
+	],
 	"type": "module",
 	"exports": {
 		".": "./src/index.ts",
