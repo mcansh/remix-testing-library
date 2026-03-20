@@ -1,49 +1,49 @@
 {
-  "name": "@mcansh/remix-testing-library",
-  "version": "0.0.0",
-  "description": "",
-  "type": "module",
-  "exports": {
-    ".": "./src/index.ts",
-    "./pure": "./src/pure.tsx",
-    "./package.json": "./package.json"
-  },
-  "publishConfig": {
-    "exports": {
-      ".": "./dist/index.js",
-      "./pure": "./dist/pure.js",
-      "./package.json": "./package.json"
-    }
-  },
-  "scripts": {
-    "format": "oxfmt",
-    "lint": "oxlint",
-    "build": "tsdown",
-    "test": "vitest",
-    "typecheck": "tsgo"
-  },
-  "dependencies": {
-    "@testing-library/dom": "catalog:",
-    "pretty-dom": "catalog:"
-  },
-  "devDependencies": {
-    "@arethetypeswrong/core": "catalog:",
-    "@remix-run/component": "github:remix-run/remix#preview/main&path:packages/component",
-    "@testing-library/jest-dom": "catalog:",
-    "@testing-library/user-event": "catalog:",
-    "@total-typescript/tsconfig": "catalog:",
-    "@types/node": "catalog:",
-    "@vitest/coverage-v8": "catalog:",
-    "happy-dom": "catalog:",
-    "oxfmt": "catalog:",
-    "oxlint": "catalog:",
-    "publint": "catalog:",
-    "tsdown": "catalog:",
-    "typescript": "catalog:",
-    "vitest": "catalog:"
-  },
-  "peerDependencies": {
-    "@remix-run/component": "*"
-  },
-  "packageManager": "pnpm@10.32.1+sha512.a706938f0e89ac1456b6563eab4edf1d1faf3368d1191fc5c59790e96dc918e4456ab2e67d613de1043d2e8c81f87303e6b40d4ffeca9df15ef1ad567348f2be"
+	"name": "@mcansh/remix-testing-library",
+	"version": "0.0.0",
+	"description": "",
+	"type": "module",
+	"exports": {
+		".": "./src/index.ts",
+		"./pure": "./src/pure.ts",
+		"./package.json": "./package.json"
+	},
+	"publishConfig": {
+		"exports": {
+			".": "./dist/index.js",
+			"./pure": "./dist/pure.js",
+			"./package.json": "./package.json"
+		}
+	},
+	"scripts": {
+		"format": "vp fmt",
+		"lint": "vp lint",
+		"build": "vp pack",
+		"test": "vp test",
+		"typecheck": "tsgo",
+		"validate": "vp check"
+	},
+	"dependencies": {
+		"@testing-library/dom": "catalog:",
+		"pretty-dom": "catalog:"
+	},
+	"devDependencies": {
+		"@arethetypeswrong/core": "catalog:",
+		"@remix-run/component": "github:remix-run/remix#preview/main&path:packages/component",
+		"@testing-library/jest-dom": "catalog:",
+		"@testing-library/user-event": "catalog:",
+		"@total-typescript/tsconfig": "catalog:",
+		"@types/node": "catalog:",
+		"@vitest/coverage-v8": "catalog:",
+		"@voidzero-dev/vite-plus-core": "catalog:",
+		"@voidzero-dev/vite-plus-test": "catalog:",
+		"happy-dom": "catalog:",
+		"publint": "catalog:",
+		"typescript": "catalog:",
+		"vite-plus": "catalog:"
+	},
+	"peerDependencies": {
+		"@remix-run/component": "*"
+	},
+	"packageManager": "pnpm@10.32.1+sha512.a706938f0e89ac1456b6563eab4edf1d1faf3368d1191fc5c59790e96dc918e4456ab2e67d613de1043d2e8c81f87303e6b40d4ffeca9df15ef1ad567348f2be"
 }

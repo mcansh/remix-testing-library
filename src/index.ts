@@ -1,4 +1,4 @@
-import { cleanup } from "./pure.ts";
+import { cleanup } from "./pure.ts"
 
 // if we're running in a test runner that supports afterEach
 // or teardown then we'll automatically run cleanup afterEach test
@@ -6,24 +6,24 @@ import { cleanup } from "./pure.ts";
 // if you don't like this then either import the `pure` module
 // or set the RTL_SKIP_AUTO_CLEANUP env variable to 'true'.
 if (typeof process === "undefined" || !process.env?.RTL_SKIP_AUTO_CLEANUP) {
-  // ignore teardown() in code coverage because Vitest does not support it
-  /* v8 ignore else */
-  // @ts-expect-error
-  if (typeof globalThis.afterEach === "function") {
-    // @ts-expect-error
-    globalThis.afterEach(() => {
-      cleanup();
-    });
-    // @ts-expect-error
-  } else if (typeof globalThis.teardown === "function") {
-    // Block is guarded by `typeof` check.
-    // eslint does not support `typeof` guards.
-    // eslint-disable-next-line no-undef
-    // @ts-expect-error
-    globalThis.teardown(() => {
-      cleanup();
-    });
-  }
+	// ignore teardown() in code coverage because Vitest does not support it
+	/* v8 ignore else */
+	// @ts-expect-error
+	if (typeof globalThis.afterEach === "function") {
+		// @ts-expect-error
+		globalThis.afterEach(() => {
+			cleanup()
+		})
+		// @ts-expect-error
+	} else if (typeof globalThis.teardown === "function") {
+		// Block is guarded by `typeof` check.
+		// eslint does not support `typeof` guards.
+		// eslint-disable-next-line no-undef
+		// @ts-expect-error
+		globalThis.teardown(() => {
+			cleanup()
+		})
+	}
 }
 
-export * from "./pure.ts";
+export * from "./pure.ts"
