@@ -1,5 +1,5 @@
 import type { RemixNode } from "@remix-run/component"
-import { screen } from "@testing-library/dom"
+import { queryHelpers, screen } from "@testing-library/dom"
 import { afterEach, expect, it, vi } from "vite-plus/test"
 
 import { cleanup, render } from "../pure.ts"
@@ -152,4 +152,14 @@ it("cleanup() skips removeChild when container is not a direct body child", () =
 
 	// manual teardown
 	document.body.removeChild(outer)
+})
+
+it("allows for custom queries to be passed in and returned from render()", () => {
+	const getByFoo = queryHelpers.queryByAttribute.bind(null, "data-foo")
+
+	const result = render(<div data-testid="test" data-foo="bar" />, {
+		queries: { getByFoo },
+	})
+
+	result.getByFoo("test")
 })

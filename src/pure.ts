@@ -1,7 +1,7 @@
 import type { RemixNode, VirtualRoot, VirtualRootOptions } from "@remix-run/component"
 import { createElement, createRoot } from "@remix-run/component"
-import type { PrettyDOMOptions } from "@testing-library/dom"
-import { getQueriesForElement, prettyDOM } from "@testing-library/dom"
+import type { PrettyDOMOptions, Queries } from "@testing-library/dom"
+import { getQueriesForElement, prettyDOM, queries as domQueries } from "@testing-library/dom"
 
 let mountedContainers = new Set<HTMLElement>()
 
@@ -14,18 +14,20 @@ function wrapUiIfNeeded(innerElement: RemixNode, wrapperComponent?: any) {
 	return wrapperComponent ? createElement(wrapperComponent, undefined, innerElement) : innerElement
 }
 
-function render(
+function render<Q extends Queries = typeof domQueries>(
 	ui: RemixNode,
 	{
 		virtualRootOptions = {},
 		container,
 		baseElement,
 		wrapper,
+		queries,
 	}: {
 		virtualRootOptions?: VirtualRootOptions
 		container?: HTMLElement
 		baseElement?: HTMLElement
 		wrapper?: any
+		queries?: Q
 	} = {},
 ) {
 	baseElement ??= document.body
@@ -57,12 +59,13 @@ function render(
 		baseElement,
 		container,
 		wrapper,
+		queries,
 	})
 }
 
 type SingleOrMany<T> = T | Array<T>
 
-function renderRoot(
+function renderRoot<Q extends Queries = typeof domQueries>(
 	ui: RemixNode,
 	{
 		root,
@@ -70,12 +73,14 @@ function renderRoot(
 		container,
 		baseElement,
 		wrapper: WrapperComponent,
+		queries,
 	}: {
 		root: VirtualRoot
 		virtualRootOptions?: VirtualRootOptions
 		container: HTMLElement
 		baseElement: HTMLElement
 		wrapper?: any
+		queries?: Q
 	},
 ) {
 	root.render(wrapUiIfNeeded(ui, WrapperComponent))
@@ -114,7 +119,7 @@ function renderRoot(
 				return template.content
 			}
 		},
-		...getQueriesForElement(baseElement),
+		...getQueriesForElement<Q>(baseElement, queries),
 	}
 }
 
