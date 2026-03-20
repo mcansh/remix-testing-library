@@ -33,13 +33,14 @@
     "@testing-library/user-event": "catalog:",
     "@total-typescript/tsconfig": "catalog:",
     "@types/node": "catalog:",
+    "@vitest/coverage-v8": "catalog:",
+    "happy-dom": "catalog:",
     "oxfmt": "catalog:",
     "oxlint": "catalog:",
     "publint": "catalog:",
     "tsdown": "catalog:",
     "typescript": "catalog:",
-    "vitest": "catalog:",
-    "happy-dom": "catalog:"
+    "vitest": "catalog:"
   },
   "peerDependencies": {
     "@remix-run/component": "*"
