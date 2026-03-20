@@ -1,3 +1,5 @@
+allowBuilds:
+  "@remix-run/component": true
 catalog:
   "@arethetypeswrong/core": ^0.18.2
   "@remix-run/component": "github:remix-run/remix#preview/main&path:packages/component"
@@ -20,7 +22,7 @@ catalog:
   vite-plus: ^0.1.13
 catalogMode: strict
 
-shellEmulator: true
-
 overrides:
   vitest: "npm:@voidzero-dev/vite-plus-test@catalog:"
+
+shellEmulator: true
