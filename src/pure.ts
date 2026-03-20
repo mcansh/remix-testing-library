@@ -14,12 +14,16 @@ function render(
   ui: RemixNode,
   {
     virtualRootOptions = {},
+    container,
+    baseElement,
   }: {
     virtualRootOptions?: VirtualRootOptions;
+    container?: HTMLElement;
+    baseElement?: HTMLElement;
   } = {},
 ) {
-  let baseElement = document.body;
-  let container = baseElement.appendChild(document.createElement("div"));
+  baseElement ??= document.body;
+  container ??= baseElement.appendChild(document.createElement("div"));
 
   let root: VirtualRoot | undefined;
 
@@ -68,7 +72,7 @@ function renderRoot(
   return {
     container,
     baseElement,
-    debug(el = baseElement, maxLength: number, options: PrettyDOMOptions) {
+    debug(el: HTMLElement = baseElement, maxLength?: number, options?: PrettyDOMOptions) {
       let elements = Array.isArray(el) ? el : [el];
       for (let element of elements) {
         console.log(prettyDOM(element, maxLength, options));
@@ -112,4 +116,3 @@ function cleanup() {
 // just re-export everything from dom-testing-library
 export * from "@testing-library/dom";
 export { cleanup, render };
-

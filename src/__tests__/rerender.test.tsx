@@ -9,9 +9,13 @@ it("rerender will re-render the element", () => {
   function Greeting() {
     return (props: { message: string }) => <div>{props.message}</div>;
   }
+
   const { container, rerender } = render(<Greeting message="hi" />);
+
   expect(container.firstChild).toHaveTextContent("hi");
+
   rerender(<Greeting message="hey" />);
+
   expect(container.firstChild).toHaveTextContent("hey");
 });
 
