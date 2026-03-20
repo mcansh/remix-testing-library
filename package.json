@@ -22,6 +22,7 @@
 		}
 	},
 	"scripts": {
+		"prepublishOnly": "vp pack",
 		"format": "vp fmt",
 		"lint": "vp lint",
 		"build": "vp pack",
