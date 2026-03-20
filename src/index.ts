@@ -6,8 +6,8 @@ import { cleanup } from "./pure.ts";
 // if you don't like this then either import the `pure` module
 // or set the RTL_SKIP_AUTO_CLEANUP env variable to 'true'.
 if (typeof process === "undefined" || !process.env?.RTL_SKIP_AUTO_CLEANUP) {
-  // ignore teardown() in code coverage because Jest does not support it
-  /* istanbul ignore else */
+  // ignore teardown() in code coverage because Vitest does not support it
+  /* v8 ignore else */
   // @ts-expect-error
   if (typeof globalThis.afterEach === "function") {
     // @ts-expect-error
