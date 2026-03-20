@@ -34,6 +34,7 @@
 		"@testing-library/user-event": "catalog:",
 		"@total-typescript/tsconfig": "catalog:",
 		"@types/node": "catalog:",
+		"@typescript/native-preview": "catalog:",
 		"@vitest/coverage-v8": "catalog:",
 		"@voidzero-dev/vite-plus-core": "catalog:",
 		"@voidzero-dev/vite-plus-test": "catalog:",
