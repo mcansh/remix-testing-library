@@ -60,6 +60,8 @@ function render(
 	})
 }
 
+type SingleOrMany<T> = T | Array<T>
+
 function renderRoot(
 	ui: RemixNode,
 	{
@@ -82,12 +84,13 @@ function renderRoot(
 		container,
 		baseElement,
 		debug(
-			el: HTMLElement | Array<HTMLElement> = baseElement,
+			el: SingleOrMany<HTMLElement | null> = baseElement,
 			maxLength?: number,
 			options?: PrettyDOMOptions,
 		) {
 			let elements = Array.isArray(el) ? el : [el]
 			for (let element of elements) {
+				if (!element) continue
 				console.log(prettyDOM(element, maxLength, options))
 			}
 		},

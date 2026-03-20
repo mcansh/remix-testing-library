@@ -5,9 +5,9 @@
 // so we can control the module environment), render something, and confirm
 // that the body is NOT empty in a subsequent test.
 
-import { afterEach, beforeAll, expect, it, vi } from "vite-plus/test";
+import { afterEach, beforeAll, expect, it, vi } from "vite-plus/test"
 
-import { cleanup, render } from "../pure";
+import { cleanup, render } from "../pure"
 
 beforeAll(() => {
 	vi.stubEnv("RTL_SKIP_AUTO_CLEANUP", "1")
