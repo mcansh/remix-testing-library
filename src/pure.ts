@@ -81,7 +81,11 @@ function renderRoot(
 	return {
 		container,
 		baseElement,
-		debug(el: HTMLElement = baseElement, maxLength?: number, options?: PrettyDOMOptions) {
+		debug(
+			el: HTMLElement | Array<HTMLElement> = baseElement,
+			maxLength?: number,
+			options?: PrettyDOMOptions,
+		) {
 			let elements = Array.isArray(el) ? el : [el]
 			for (let element of elements) {
 				console.log(prettyDOM(element, maxLength, options))
