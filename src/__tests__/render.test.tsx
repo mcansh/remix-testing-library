@@ -1,5 +1,6 @@
 import { screen } from "@testing-library/dom";
-import { afterEach, expect, it, vi } from "vitest";
+import { afterEach, expect, it } from "vitest";
+import type { RemixNode } from "@remix-run/component";
 
 import { cleanup, render } from "../pure.ts";
 
@@ -60,4 +61,23 @@ it("can be called multiple times on the same container", () => {
   dispose();
 
   expect(container).toBeEmptyDOMElement();
+});
+
+it("renders options.wrapper around node", () => {
+  function WrapperComponent() {
+    return ({ children }: { children: RemixNode }) => <div data-testid="wrapper">{children}</div>;
+  }
+
+  const { container } = render(<div data-testid="inner" />, { wrapper: WrapperComponent });
+
+  expect(screen.getByTestId("wrapper")).toBeInTheDocument();
+  expect(container.firstChild).toMatchInlineSnapshot(`
+    <div
+      data-testid="wrapper"
+    >
+      <div
+        data-testid="inner"
+      />
+    </div>
+  `);
 });

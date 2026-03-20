@@ -1,5 +1,5 @@
 import type { RemixNode, VirtualRoot, VirtualRootOptions } from "@remix-run/component";
-import { createRoot } from "@remix-run/component";
+import { createElement, createRoot } from "@remix-run/component";
 import type { PrettyDOMOptions } from "@testing-library/dom";
 import { getQueriesForElement, prettyDOM } from "@testing-library/dom";
 
@@ -10,16 +10,22 @@ let mountedRootEntries: Array<{
   container: HTMLElement;
 }> = [];
 
+function wrapUiIfNeeded(innerElement: RemixNode, wrapperComponent?: any) {
+  return wrapperComponent ? createElement(wrapperComponent, undefined, innerElement) : innerElement;
+}
+
 function render(
   ui: RemixNode,
   {
     virtualRootOptions = {},
     container,
     baseElement,
+    wrapper,
   }: {
     virtualRootOptions?: VirtualRootOptions;
     container?: HTMLElement;
     baseElement?: HTMLElement;
+    wrapper?: any;
   } = {},
 ) {
   baseElement ??= document.body;
@@ -50,6 +56,7 @@ function render(
     virtualRootOptions,
     baseElement,
     container,
+    wrapper,
   });
 }
 
@@ -60,14 +67,16 @@ function renderRoot(
     virtualRootOptions,
     container,
     baseElement,
+    wrapper: WrapperComponent,
   }: {
     root: VirtualRoot;
     virtualRootOptions?: VirtualRootOptions;
     container: HTMLElement;
     baseElement: HTMLElement;
+    wrapper?: any;
   },
 ) {
-  root.render(ui);
+  root.render(wrapUiIfNeeded(ui, WrapperComponent));
 
   return {
     container,
