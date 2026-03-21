@@ -29,6 +29,7 @@ import { defineConfig } from "vitest/config";
 export default defineConfig({
   test: {
     environment: "happy-dom",
+    globals: true, // required for auto-cleanup after each test
   },
 });
 ```
@@ -70,6 +71,11 @@ it("updates when rerendered with new props", () => {
 ```
 
 ### Interactive components
+
+> **Note:** The interactive example below uses [`@testing-library/user-event`](https://testing-library.com/docs/user-event/intro), which must be installed separately:
+> ```sh
+> npm install --save-dev @testing-library/user-event
+> ```
 
 ```tsx
 import { on, pressEvents, type Handle } from "@remix-run/component";
@@ -116,10 +122,10 @@ Renders a Remix component into a container appended to `document.body` and retur
 | Property | Description |
 | --- | --- |
 | `container` | The `div` element the component was rendered into |
-| `baseElement` | `document.body` |
+| `baseElement` | `document.body` (or the custom `baseElement` option if provided) |
 | `debug(el?, maxLength?, options?)` | Logs a pretty-printed DOM snapshot to the console |
 | `rerender(ui)` | Re-renders the component with new props |
-| `dispose()` | Unmounts the component and cleans up the container |
+| `dispose()` | Unmounts the component |
 | `asFragment()` | Returns a `DocumentFragment` snapshot of the current DOM |
 | `...queries` | All [DOM Testing Library queries](https://testing-library.com/docs/queries/about) bound to `baseElement` |
 
@@ -127,11 +133,15 @@ Renders a Remix component into a container appended to `document.body` and retur
 
 | Option | Type | Description |
 | --- | --- | --- |
+| `container` | `HTMLElement` | Custom container element (defaults to a new `div` appended to `baseElement`) |
+| `baseElement` | `HTMLElement` | Custom base element for queries (defaults to `document.body`) |
+| `wrapper` | component | Wraps the rendered UI with the given component |
+| `queries` | `Queries` | Custom queries to bind to `baseElement` (defaults to all `@testing-library/dom` queries) |
 | `virtualRootOptions` | `VirtualRootOptions` | Options forwarded to `createRoot` from `@remix-run/component` |
 
 ### `cleanup()`
 
-Unmounts all components rendered with `render` and removes their containers from `document.body`. This is called automatically after each test when `afterEach` is available (e.g. Vitest, Jest). Import from `@mcansh/remix-testing-library/pure` to opt out of auto-cleanup.
+Unmounts all components rendered with `render` and removes their containers from `document.body`. This is called automatically after each test only when a *global* `afterEach` or `teardown` function is available on `globalThis`. Jest provides this by default; in Vitest, you must enable `test.globals: true` in your Vitest config — simply importing `afterEach` in a test file is not sufficient. Import from `@mcansh/remix-testing-library/pure` to opt out of auto-cleanup.
 
 ### Pure imports (no auto-cleanup)
 
