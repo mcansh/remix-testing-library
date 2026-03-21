@@ -29,13 +29,13 @@ jobs:
       - name: 🟧 Setup pnpm
         uses: pnpm/action-setup@v4
 
-      - name: Setup Vite+
+      - name: ⚡️ Setup Vite+
         uses: voidzero-dev/setup-vp@v1
         with:
           node-version-file: .node-version
           cache: true
 
-      - name: Install dependencies
+      - name: ⚡️ Install Dependencies
         run: vp install
 
       - name: 🚀 PR / Publish
