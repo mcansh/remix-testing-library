@@ -36,6 +36,7 @@
 	},
 	"devDependencies": {
 		"@arethetypeswrong/core": "catalog:",
+		"@changesets/cli": "catalog:",
 		"@remix-run/component": "github:remix-run/remix#preview/main&path:packages/component",
 		"@testing-library/jest-dom": "catalog:",
 		"@testing-library/user-event": "catalog:",

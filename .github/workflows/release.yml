@@ -1,0 +1,43 @@
+name: 🦋 Changesets Release
+
+on:
+  push:
+    branches:
+      - release
+      - "release-*"
+      - "!release-experimental"
+      - "!release-experimental-*"
+      - "!release-manual"
+      - "!release-manual-*"
+
+permissions:
+  id-token: write
+  pull-requests: write
+  contents: write
+
+concurrency: ${{ github.workflow }}-${{ github.ref }}
+
+jobs:
+  release:
+    name: 🦋 Changesets Release
+    if: github.repository == 'mcansh/remix-testing-library'
+    runs-on: ubuntu-slim
+    steps:
+      - name: ⬇️ Checkout repo
+        uses: actions/checkout@v6
+
+      - name: Setup Vite+
+        uses: voidzero-dev/setup-vp@v1
+        with:
+          node-version-file: .node-version
+          cache: true
+
+      - name: Install dependencies
+        run: vp install
+
+      - name: Create Release Pull Request
+        uses: changesets/action@v1
+        with:
+          commit: "chore: Update version for release"
+          title: "chore: Update version for release"
+          createGithubReleases: true
