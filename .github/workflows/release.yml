@@ -43,7 +43,7 @@ jobs:
         with:
           commit: "chore: Update version for release"
           title: "chore: Update version for release"
-          publish: pnpm publish --access public
+          publish: pnpm publish --access public --no-git-checks
           createGithubReleases: true
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
