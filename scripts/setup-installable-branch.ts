@@ -47,7 +47,7 @@ main()
 
 async function main() {
 	// Capture the current branch name
-	let sha = logAndExec("git rev-parse --short HEAD ", true).trim()
+	let sha = logAndExec("git rev-parse --short HEAD ", true)
 
 	console.log(`Preparing installable branch \`${installableBranch}\` from sha ${sha}`)
 
