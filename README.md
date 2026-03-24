@@ -5,16 +5,18 @@ a small wrapper around DOM Testing Library for use with Remix v3
 ## Installation
 
 ```sh
-npm install --save-dev @mcansh/remix-testing-library
+npm install --save-dev @mcansh/remix-testing-library @testing-library/dom
 ```
 
 ```sh
-pnpm add --save-dev @mcansh/remix-testing-library
+pnpm add --save-dev @mcansh/remix-testing-library @testing-library/dom
 ```
 
 ```sh
-yarn add --dev @mcansh/remix-testing-library
+yarn add --dev @mcansh/remix-testing-library @testing-library/dom
 ```
+
+> **Note:** `@testing-library/dom` is a peer dependency and must be installed alongside `@mcansh/remix-testing-library`.
 
 You will also need a DOM environment for your test runner. For example, with [Vitest](https://vitest.dev/) and [happy-dom](https://github.com/capricorn86/happy-dom):
 
