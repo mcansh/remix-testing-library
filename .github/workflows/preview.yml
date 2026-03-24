@@ -1,10 +1,10 @@
 # Create "installable" preview branches
 #
-# Commits to `dev` push builds to a `preview/dev` branch:
-#   pnpm install "remix-run/react-router#preview/dev&path:packages/react-router"
+# Commits to `main` push builds to a `preview/main` branch:
+#   pnpm install "mcansh/remix-testing-library#preview/main"
 #
 # Can also be dispatched manually with base/installable branches to provide
-# `experimental` branches from PRs or otherwise.
+# preview branches from PRs or otherwise.
 
 name: Preview Build
 
@@ -23,8 +23,8 @@ on:
 
 concurrency:
   # Include `event_name` here because when a pull_request is merged (closed), the
-  # `github.ref` goes back to `ref/heads/dev` which will conflict with the run on
-  # `dev` from the merged PR
+  # `github.ref` goes back to `ref/heads/main` which will conflict with the run on
+  # `main` from the merged PR
   group: ${{ github.workflow }}-${{ github.event_name }}-${{ github.ref }}
   cancel-in-progress: true
 
@@ -32,6 +32,8 @@ jobs:
   preview:
     if: github.repository == 'mcansh/remix-testing-library'
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - name: Checkout (push)
         if: github.event_name == 'push'
@@ -49,7 +51,7 @@ jobs:
       - name: Install Node.js
         uses: actions/setup-node@v4
         with:
-          node-version-file: "package.json"
+          node-version-file: ".node-version"
           cache: pnpm
 
       - name: Install dependencies
@@ -60,7 +62,7 @@ jobs:
           git config --local user.email "hello@remix.run"
           git config --local user.name "Remix Run Bot"
 
-      # Build and force push over the preview/dev branch
+      # Build and force push over the preview/main branch
       - name: Build/push branch (push)
         if: github.event_name == 'push'
         run: |
@@ -72,7 +74,14 @@ jobs:
       # pushes over remote branches in case of a branch name collision
       - name: Build/push branch (workflow_dispatch)
         if: github.event_name == 'workflow_dispatch'
+        env:
+          INSTALLABLE_BRANCH: ${{ inputs.installableBranch }}
         run: |
-          pnpm run setup-installable-branch ${{ inputs.installableBranch }}
-          git push --set-upstream origin ${{ inputs.installableBranch }}
+          # NOTE: Keep this regex in sync with the validation in scripts/setup-installable-branch.ts
+          if ! echo "$INSTALLABLE_BRANCH" | grep -qE '^[a-zA-Z0-9][a-zA-Z0-9._/-]*$'; then
+            echo "Error: installableBranch contains invalid characters" >&2
+            exit 1
+          fi
+          pnpm run setup-installable-branch "$INSTALLABLE_BRANCH"
+          git push --set-upstream origin "$INSTALLABLE_BRANCH"
           echo "💿 pushed installable branch: https://github.com/$GITHUB_REPOSITORY/commit/$(git rev-parse HEAD)"

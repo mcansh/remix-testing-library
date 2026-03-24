@@ -4,10 +4,10 @@ import * as util from "node:util";
 import { logAndExec } from "./utils/process.ts";
 
 /**
- * This script prepares a base branch (usually `dev`) to be PNPM-installable
- * directly from GitHub via a new branch (usually `preview/dev`):
+ * This script prepares a base branch (usually `main`) to be PNPM-installable
+ * directly from GitHub via a new branch (usually `preview/main`):
  *
- *   pnpm install "remix-run/react-router#preview/dev&path:packages/react-router"
+ *   pnpm install "mcansh/remix-testing-library#preview/main"
  *
  * To do this, we can run a build, make some minor changes to the repo, and
  * commit the build + changes to the new branch. These changes would never be
@@ -17,14 +17,11 @@ import { logAndExec } from "./utils/process.ts";
  *  - Checks out the new branch and resets it to the base (current) branch
  *  - Runs a build
  *  - Removes `dist/` from `.gitignore`
- *  - Updates all internal `@react-router/*` deps to use the github format for the
- *    given installable branch
- *  - Copies all `publishConfig`'s down so we get `exports` from `dist/` instead of `src/`
+ *  - Updates internal package dependencies to point to the installable branch
  *  - Commits the changes
  *
- * Then, after pushing, `pnpm install "remix-run/react-router#preview/dev&path:packages/react-router"`
- * sees the `react-router` nested deps and they all point to github with similar URLs so
- * they install as nested deps the same way.
+ * Then, after pushing, `pnpm install "mcansh/remix-testing-library#preview/main"`
+ * installs the package directly from the built branch.
  */
 
 let { positionals } = util.parseArgs({
@@ -36,6 +33,14 @@ if (!installableBranch) {
   throw new Error("Error: You must provide an installable branch name");
 }
 
+// Validate branch name to prevent command injection
+// NOTE: Keep this regex in sync with the validation in .github/workflows/preview.yml
+if (!/^[a-zA-Z0-9][a-zA-Z0-9._/-]*$/.test(installableBranch)) {
+  throw new Error(
+    "Error: installableBranch contains invalid characters. Branch names must start with an alphanumeric character and contain only alphanumeric characters, dots, underscores, hyphens, and slashes.",
+  );
+}
+
 // Error if git status is not clean
 let gitStatus = logAndExec("git status --porcelain", true);
 if (gitStatus) {
@@ -44,7 +49,10 @@ if (gitStatus) {
   );
 }
 
-main();
+main().catch((err) => {
+  console.error(err);
+  process.exit(1);
+});
 
 async function main() {
   // Capture the current branch name
@@ -64,7 +72,7 @@ async function main() {
   await updatePackageDependencies();
 
   logAndExec("git add .");
-  logAndExec(`git commit -a -m "installable build from ${sha}"`);
+  logAndExec(`git commit -m "installable build from ${sha}"`);
 
   console.log(
     [
@@ -73,7 +81,7 @@ async function main() {
       "",
       `You can now push the \`${installableBranch}\` branch to GitHub and install via:`,
       "",
-      `  pnpm install "remix-run/react-router#${installableBranch}&path:packages/react-router"`,
+      `  pnpm install "mcansh/remix-testing-library#${installableBranch}"`,
     ].join("\n"),
   );
 }
@@ -84,7 +92,7 @@ async function updateGitignore() {
   let content = await fsp.readFile(gitignorePath, "utf-8");
   let filtered = content
     .split("\n")
-    .filter((line) => line.trim() !== "/packages/*/dist/")
+    .filter((line) => line.trim() !== "/dist/")
     .join("\n");
   await fsp.writeFile(gitignorePath, filtered);
   console.log("Updated .gitignore");
@@ -94,7 +102,18 @@ async function updateGitignore() {
 async function updatePackageDependencies() {
   let packagesDir = path.join(process.cwd(), "packages");
 
-  let packageDirNames = await fsp.readdir(packagesDir, { withFileTypes: true });
+  let packageDirNames;
+  try {
+    packageDirNames = await fsp.readdir(packagesDir, { withFileTypes: true });
+  } catch (error) {
+    if ((error as NodeJS.ErrnoException).code === "ENOENT") {
+      console.log(
+        `No "packages" directory found at ${packagesDir}, skipping dependency update.`,
+      );
+      return;
+    }
+    throw error;
+  }
 
   for (let dir of packageDirNames) {
     if (!dir.isDirectory()) continue;
