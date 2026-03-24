@@ -17,8 +17,8 @@ export default defineConfig({
 		dts: true,
 		sourcemap: true,
 		nodeProtocol: true,
-		attw: { profile: "esm-only", enabled: "local-only" },
-		publint: { enabled: "local-only" },
+		attw: { profile: "esm-only" },
+		publint: true,
 		format: "esm",
 		exports: {
 			devExports: true,
