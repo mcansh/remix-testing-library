@@ -62,9 +62,6 @@ importers:
 
   .:
     dependencies:
-      '@testing-library/dom':
-        specifier: 'catalog:'
-        version: 10.4.1
       pretty-dom:
         specifier: 'catalog:'
         version: 1.0.0
@@ -78,6 +75,9 @@ importers:
       '@remix-run/component':
         specifier: github:remix-run/remix#preview/main&path:packages/component
         version: https://codeload.github.com/remix-run/remix/tar.gz/4de6d36d651563d7d068f9c88c55bc98c18c2599#path:packages/component
+      '@testing-library/dom':
+        specifier: 'catalog:'
+        version: 10.4.1
       '@testing-library/jest-dom':
         specifier: 'catalog:'
         version: 6.9.1
