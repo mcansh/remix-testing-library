@@ -29,7 +29,7 @@
 		"test": "vp test",
 		"typecheck": "tsgo",
 		"validate": "vp check",
-  "setup-installable-branch": "node scripts/setup-installable-branch.ts"
+		"setup-installable-branch": "node scripts/setup-installable-branch.ts"
 	},
 	"dependencies": {
 		"@testing-library/dom": "catalog:",
