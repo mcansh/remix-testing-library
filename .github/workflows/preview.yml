@@ -1,7 +1,7 @@
 # Create "installable" preview branches
 #
 # Commits to `dev` push builds to a `preview/dev` branch:
-#   pnpm install "remix-run/react-router#preview/dev&path:packages/react-router"
+#   pnpm install "mcansh/remix-testing-library#preview/dev
 #
 # Can also be dispatched manually with base/installable branches to provide
 # `experimental` branches from PRs or otherwise.
