@@ -31,13 +31,13 @@
 		"validate": "vp check"
 	},
 	"dependencies": {
-		"@testing-library/dom": "catalog:",
 		"pretty-dom": "catalog:"
 	},
 	"devDependencies": {
 		"@arethetypeswrong/core": "catalog:",
 		"@changesets/cli": "catalog:",
 		"@remix-run/component": "github:remix-run/remix#preview/main&path:packages/component",
+		"@testing-library/dom": "catalog:",
 		"@testing-library/jest-dom": "catalog:",
 		"@testing-library/user-event": "catalog:",
 		"@total-typescript/tsconfig": "catalog:",
@@ -52,7 +52,8 @@
 		"vite-plus": "catalog:"
 	},
 	"peerDependencies": {
-		"@remix-run/component": "*"
+		"@remix-run/component": "*",
+		"@testing-library/dom": "^10.0.0"
 	},
 	"packageManager": "pnpm@10.32.1+sha512.a706938f0e89ac1456b6563eab4edf1d1faf3368d1191fc5c59790e96dc918e4456ab2e67d613de1043d2e8c81f87303e6b40d4ffeca9df15ef1ad567348f2be"
 }
