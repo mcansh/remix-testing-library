@@ -77,7 +77,7 @@ importers:
         version: 2.30.0(@types/node@25.5.0)
       '@remix-run/component':
         specifier: github:remix-run/remix#preview/main&path:packages/component
-        version: https://codeload.github.com/remix-run/remix/tar.gz/4de6d36d651563d7d068f9c88c55bc98c18c2599#path:packages/component
+        version: https://codeload.github.com/remix-run/remix/tar.gz/8ab583ac83141fbaa75dae7f3865b1b9a05f6d28#path:packages/component
       '@testing-library/jest-dom':
         specifier: 'catalog:'
         version: 6.9.1
@@ -554,9 +554,9 @@ packages:
     resolution: {integrity: sha512-HDVTWq3H0uTXiU0eeSQntcVUTPP3GamzeXI41+x7uU9J65JgWQh3qWZHblR1i0npXfFtF+mxBiU2nJH8znxWnQ==}
     engines: {node: '>=18'}
 
-  '@remix-run/component@https://codeload.github.com/remix-run/remix/tar.gz/4de6d36d651563d7d068f9c88c55bc98c18c2599#path:packages/component':
-    resolution: {path: packages/component, tarball: https://codeload.github.com/remix-run/remix/tar.gz/4de6d36d651563d7d068f9c88c55bc98c18c2599}
-    version: 0.5.0
+  '@remix-run/component@https://codeload.github.com/remix-run/remix/tar.gz/8ab583ac83141fbaa75dae7f3865b1b9a05f6d28#path:packages/component':
+    resolution: {path: packages/component, tarball: https://codeload.github.com/remix-run/remix/tar.gz/8ab583ac83141fbaa75dae7f3865b1b9a05f6d28}
+    version: 0.6.0
 
   '@rolldown/binding-android-arm64@1.0.0-rc.10':
     resolution: {integrity: sha512-jOHxwXhxmFKuXztiu1ORieJeTbx5vrTkcOkkkn2d35726+iwhrY1w/+nYY/AGgF12thg33qC3R1LMBF5tHTZHg==}
@@ -1315,12 +1315,12 @@ packages:
   picocolors@1.1.1:
     resolution: {integrity: sha512-xceH2snhtb5M9liqDsmEw56le376mTZkEX/jEb/RxNFyegNul7eNslCXP9FDj/Lcu0X8KEyMceP2ntpaHrDEVA==}
 
-  picomatch@2.3.1:
-    resolution: {integrity: sha512-JU3teHTNjmE2VCGFzuY8EXzCDVwEqB2a8fsIvwaStHhAWJEeVd1o1QD80CU6+ZdEXXSLbSsuLwJjkCBWqRQUVA==}
+  picomatch@2.3.2:
+    resolution: {integrity: sha512-V7+vQEJ06Z+c5tSye8S+nHUfI51xoXIXjHQ99cQtKUkQqqO1kO/KCJUfZXuB47h/YBlDhah2H3hdUGXn8ie0oA==}
     engines: {node: '>=8.6'}
 
-  picomatch@4.0.3:
-    resolution: {integrity: sha512-5gTmgEY/sqK6gFXLIsQNH19lWb4ebPDLA4SdLP7dsWkIXHWlG66oPuVvXSGFPppYZz8ZDZq0dYYrbHfBCVUb1Q==}
+  picomatch@4.0.4:
+    resolution: {integrity: sha512-QP88BAKvMam/3NxH6vj2o21R6MjxZUAd6nlwAS/pnGvN9IVLocLHxGYIzFhg6fUQ+5th6P4dv4eW9jX3DSIj7A==}
     engines: {node: '>=12'}
 
   pify@4.0.1:
@@ -1970,7 +1970,7 @@ snapshots:
 
   '@publint/pack@0.1.4': {}
 
-  '@remix-run/component@https://codeload.github.com/remix-run/remix/tar.gz/4de6d36d651563d7d068f9c88c55bc98c18c2599#path:packages/component':
+  '@remix-run/component@https://codeload.github.com/remix-run/remix/tar.gz/8ab583ac83141fbaa75dae7f3865b1b9a05f6d28#path:packages/component':
     dependencies:
       '@types/dom-navigation': 1.0.7
 
@@ -2304,9 +2304,9 @@ snapshots:
     dependencies:
       reusify: 1.1.0
 
-  fdir@6.5.0(picomatch@4.0.3):
+  fdir@6.5.0(picomatch@4.0.4):
     optionalDependencies:
-      picomatch: 4.0.3
+      picomatch: 4.0.4
 
   fflate@0.8.2: {}
 
@@ -2498,7 +2498,7 @@ snapshots:
   micromatch@4.0.8:
     dependencies:
       braces: 3.0.3
-      picomatch: 2.3.1
+      picomatch: 2.3.2
 
   min-indent@1.0.1: {}
 
@@ -2598,9 +2598,9 @@ snapshots:
 
   picocolors@1.1.1: {}
 
-  picomatch@2.3.1: {}
+  picomatch@2.3.2: {}
 
-  picomatch@4.0.3: {}
+  picomatch@4.0.4: {}
 
   pify@4.0.1: {}
 
@@ -2739,8 +2739,8 @@ snapshots:
 
   tinyglobby@0.2.15:
     dependencies:
-      fdir: 6.5.0(picomatch@4.0.3)
-      picomatch: 4.0.3
+      fdir: 6.5.0(picomatch@4.0.4)
+      picomatch: 4.0.4
 
   tinypool@2.1.0: {}
 
@@ -2814,7 +2814,7 @@ snapshots:
   vite@8.0.1(@types/node@25.5.0)(jiti@1.21.7):
     dependencies:
       lightningcss: 1.32.0
-      picomatch: 4.0.3
+      picomatch: 4.0.4
       postcss: 8.5.8
       rolldown: 1.0.0-rc.10
       tinyglobby: 0.2.15
