@@ -13,7 +13,7 @@ catalog:
   "@vitest/coverage-v8": 4.1.0
   "@voidzero-dev/vite-plus-core": ^0.1.13
   "@voidzero-dev/vite-plus-test": ^0.1.13
-  happy-dom: ^20.8.4
+  happy-dom: ^21.0.4
   oxfmt: ^0.41.0
   oxlint: ^1.56.0
   pretty-dom: ^1.0.0
