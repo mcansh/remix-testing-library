@@ -40,8 +40,8 @@ catalogs:
       specifier: ^0.1.13
       version: 0.1.13
     happy-dom:
-      specifier: ^20.8.4
-      version: 20.8.4
+      specifier: ^21.0.4
+      version: 21.0.4
     pretty-dom:
       specifier: ^1.0.0
       version: 1.0.0
@@ -77,7 +77,7 @@ importers:
         version: 2.30.0(@types/node@25.5.0)
       '@remix-run/component':
         specifier: github:remix-run/remix#preview/main&path:packages/component
-        version: https://codeload.github.com/remix-run/remix/tar.gz/8ab583ac83141fbaa75dae7f3865b1b9a05f6d28#path:packages/component
+        version: https://codeload.github.com/remix-run/remix/tar.gz/cff4bc613eae155a375a7c6f605c444121fffac7#path:packages/component
       '@testing-library/jest-dom':
         specifier: 'catalog:'
         version: 6.9.1
@@ -101,10 +101,10 @@ importers:
         version: 0.1.13(@arethetypeswrong/core@0.18.2)(@types/node@25.5.0)(jiti@1.21.7)(publint@0.3.18)(typescript@5.9.3)
       '@voidzero-dev/vite-plus-test':
         specifier: 'catalog:'
-        version: 0.1.13(@arethetypeswrong/core@0.18.2)(@types/node@25.5.0)(happy-dom@20.8.4)(jiti@1.21.7)(publint@0.3.18)(typescript@5.9.3)(vite@8.0.1(@types/node@25.5.0)(jiti@1.21.7))
+        version: 0.1.13(@arethetypeswrong/core@0.18.2)(@types/node@25.5.0)(happy-dom@21.0.4)(jiti@1.21.7)(publint@0.3.18)(typescript@5.9.3)(vite@8.0.1(@types/node@25.5.0)(jiti@1.21.7))
       happy-dom:
         specifier: 'catalog:'
-        version: 20.8.4
+        version: 21.0.4
       publint:
         specifier: 'catalog:'
         version: 0.3.18
@@ -113,7 +113,7 @@ importers:
         version: 5.9.3
       vite-plus:
         specifier: 'catalog:'
-        version: 0.1.13(@arethetypeswrong/core@0.18.2)(@types/node@25.5.0)(happy-dom@20.8.4)(jiti@1.21.7)(publint@0.3.18)(typescript@5.9.3)(vite@8.0.1(@types/node@25.5.0)(jiti@1.21.7))
+        version: 0.1.13(@arethetypeswrong/core@0.18.2)(@types/node@25.5.0)(happy-dom@21.0.4)(jiti@1.21.7)(publint@0.3.18)(typescript@5.9.3)(vite@8.0.1(@types/node@25.5.0)(jiti@1.21.7))
 
 packages:
 
@@ -554,9 +554,9 @@ packages:
     resolution: {integrity: sha512-HDVTWq3H0uTXiU0eeSQntcVUTPP3GamzeXI41+x7uU9J65JgWQh3qWZHblR1i0npXfFtF+mxBiU2nJH8znxWnQ==}
     engines: {node: '>=18'}
 
-  '@remix-run/component@https://codeload.github.com/remix-run/remix/tar.gz/8ab583ac83141fbaa75dae7f3865b1b9a05f6d28#path:packages/component':
-    resolution: {path: packages/component, tarball: https://codeload.github.com/remix-run/remix/tar.gz/8ab583ac83141fbaa75dae7f3865b1b9a05f6d28}
-    version: 0.6.0
+  '@remix-run/component@https://codeload.github.com/remix-run/remix/tar.gz/cff4bc613eae155a375a7c6f605c444121fffac7#path:packages/component':
+    resolution: {path: packages/component, tarball: https://codeload.github.com/remix-run/remix/tar.gz/cff4bc613eae155a375a7c6f605c444121fffac7}
+    version: 1.1.0
 
   '@rolldown/binding-android-arm64@1.0.0-rc.10':
     resolution: {integrity: sha512-jOHxwXhxmFKuXztiu1ORieJeTbx5vrTkcOkkkn2d35726+iwhrY1w/+nYY/AGgF12thg33qC3R1LMBF5tHTZHg==}
@@ -930,6 +930,10 @@ packages:
     resolution: {integrity: sha512-yQbXgO/OSZVD2IsiLlro+7Hf6Q18EJrKSEsdoMzKePKXct3gvD8oLcOQdIzGupr5Fj+EDe8gO/lxc1BzfMpxvA==}
     engines: {node: '>=8'}
 
+  buffer-image-size@0.6.4:
+    resolution: {integrity: sha512-nEh+kZOPY1w+gcCMobZ6ETUp9WfibndnosbpwB1iJk/8Gt5ZF2bhS6+B6bPYz424KtwsR6Rflc3tCz1/ghX2dQ==}
+    engines: {node: '>=4.0'}
+
   cac@7.0.0:
     resolution: {integrity: sha512-tixWYgm5ZoOD+3g6UTea91eow5z6AAHaho3g0V9CNSNb45gM8SmflpAc+GRd1InC4AqN/07Unrgp56Y94N9hJQ==}
     engines: {node: '>=20.19.0'}
@@ -1045,8 +1049,8 @@ packages:
   graceful-fs@4.2.11:
     resolution: {integrity: sha512-RbJ5/jmFcNNCcDV5o9eTnBLJ/HszWV0P73bc+Ff4nS/rJj+YaS6IGyiOL0VoBYX+l1Wrl3k63h/KrH+nhJ0XvQ==}
 
-  happy-dom@20.8.4:
-    resolution: {integrity: sha512-GKhjq4OQCYB4VLFBzv8mmccUadwlAusOZOI7hC1D9xDIT5HhzkJK17c4el2f6R6C715P9xB4uiMxeKUa2nHMwQ==}
+  happy-dom@21.0.4:
+    resolution: {integrity: sha512-tFm+GaLBgo6o0awHnvHaNoraVo27qJ+2tZEtZ+cIa08hXbeitrxAJajLI05hsUy/2/YTKcUjQYzHe5mCcraLBw==}
     engines: {node: '>=20.0.0'}
 
   has-flag@4.0.0:
@@ -1574,6 +1578,18 @@ packages:
       utf-8-validate:
         optional: true
 
+  ws@8.22.0:
+    resolution: {integrity: sha512-Ydggc987+RO0AnWtZ/7Wq9FtNvcrL1b/RO0ud9mWjUPgDrsAAwQSF51sm2hm1XofbU/4jkpGEsLFsZZxU+1DOg==}
+    engines: {node: '>=10.0.0'}
+    peerDependencies:
+      bufferutil: ^4.0.1
+      utf-8-validate: '>=5.0.2'
+    peerDependenciesMeta:
+      bufferutil:
+        optional: true
+      utf-8-validate:
+        optional: true
+
 snapshots:
 
   '@adobe/css-tools@4.4.4': {}
@@ -1970,7 +1986,7 @@ snapshots:
 
   '@publint/pack@0.1.4': {}
 
-  '@remix-run/component@https://codeload.github.com/remix-run/remix/tar.gz/8ab583ac83141fbaa75dae7f3865b1b9a05f6d28#path:packages/component':
+  '@remix-run/component@https://codeload.github.com/remix-run/remix/tar.gz/cff4bc613eae155a375a7c6f605c444121fffac7#path:packages/component':
     dependencies:
       '@types/dom-navigation': 1.0.7
 
@@ -2161,7 +2177,7 @@ snapshots:
   '@voidzero-dev/vite-plus-linux-x64-gnu@0.1.13':
     optional: true
 
-  '@voidzero-dev/vite-plus-test@0.1.13(@arethetypeswrong/core@0.18.2)(@types/node@25.5.0)(happy-dom@20.8.4)(jiti@1.21.7)(publint@0.3.18)(typescript@5.9.3)(vite@8.0.1(@types/node@25.5.0)(jiti@1.21.7))':
+  '@voidzero-dev/vite-plus-test@0.1.13(@arethetypeswrong/core@0.18.2)(@types/node@25.5.0)(happy-dom@21.0.4)(jiti@1.21.7)(publint@0.3.18)(typescript@5.9.3)(vite@8.0.1(@types/node@25.5.0)(jiti@1.21.7))':
     dependencies:
       '@standard-schema/spec': 1.1.0
       '@types/chai': 5.2.3
@@ -2179,7 +2195,7 @@ snapshots:
       ws: 8.19.0
     optionalDependencies:
       '@types/node': 25.5.0
-      happy-dom: 20.8.4
+      happy-dom: 21.0.4
     transitivePeerDependencies:
       - '@arethetypeswrong/core'
       - '@tsdown/css'
@@ -2244,6 +2260,10 @@ snapshots:
   braces@3.0.3:
     dependencies:
       fill-range: 7.1.1
+
+  buffer-image-size@0.6.4:
+    dependencies:
+      '@types/node': 25.5.0
 
   cac@7.0.0: {}
 
@@ -2349,14 +2369,15 @@ snapshots:
 
   graceful-fs@4.2.11: {}
 
-  happy-dom@20.8.4:
+  happy-dom@21.0.4:
     dependencies:
       '@types/node': 25.5.0
       '@types/whatwg-mimetype': 3.0.2
       '@types/ws': 8.18.1
+      buffer-image-size: 0.6.4
       entities: 7.0.1
       whatwg-mimetype: 3.0.0
-      ws: 8.19.0
+      ws: 8.22.0
     transitivePeerDependencies:
       - bufferutil
       - utf-8-validate
@@ -2765,11 +2786,11 @@ snapshots:
 
   validate-npm-package-name@5.0.1: {}
 
-  vite-plus@0.1.13(@arethetypeswrong/core@0.18.2)(@types/node@25.5.0)(happy-dom@20.8.4)(jiti@1.21.7)(publint@0.3.18)(typescript@5.9.3)(vite@8.0.1(@types/node@25.5.0)(jiti@1.21.7)):
+  vite-plus@0.1.13(@arethetypeswrong/core@0.18.2)(@types/node@25.5.0)(happy-dom@21.0.4)(jiti@1.21.7)(publint@0.3.18)(typescript@5.9.3)(vite@8.0.1(@types/node@25.5.0)(jiti@1.21.7)):
     dependencies:
       '@oxc-project/types': 0.120.0
       '@voidzero-dev/vite-plus-core': 0.1.13(@arethetypeswrong/core@0.18.2)(@types/node@25.5.0)(jiti@1.21.7)(publint@0.3.18)(typescript@5.9.3)
-      '@voidzero-dev/vite-plus-test': 0.1.13(@arethetypeswrong/core@0.18.2)(@types/node@25.5.0)(happy-dom@20.8.4)(jiti@1.21.7)(publint@0.3.18)(typescript@5.9.3)(vite@8.0.1(@types/node@25.5.0)(jiti@1.21.7))
+      '@voidzero-dev/vite-plus-test': 0.1.13(@arethetypeswrong/core@0.18.2)(@types/node@25.5.0)(happy-dom@21.0.4)(jiti@1.21.7)(publint@0.3.18)(typescript@5.9.3)(vite@8.0.1(@types/node@25.5.0)(jiti@1.21.7))
       cac: 7.0.0
       cross-spawn: 7.0.6
       oxfmt: 0.41.0
@@ -2830,3 +2851,5 @@ snapshots:
       isexe: 2.0.0
 
   ws@8.19.0: {}
+
+  ws@8.22.0: {}
