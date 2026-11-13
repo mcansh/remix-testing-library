@@ -28,6 +28,8 @@ jobs:
 
       - name: 🟧 Setup pnpm
         uses: pnpm/action-setup@v4
+        with:
+          dest: ~/.ci/setup-pnpm
 
       - name: ⚡️ Setup Vite+
         uses: voidzero-dev/setup-vp@v1
